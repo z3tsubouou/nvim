@@ -53,6 +53,15 @@ nnoremap tn :tabn <CR>
 nnoremap tp :tabp <CR>
 nnoremap tN :tabnew <CR>
 nnoremap tc :tabc <CR>
+
+" move line
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+inoremap <C-j> <Esc>:m+<CR>==gi
+inoremap <C-k> <Esc>:m-2<CR>==gi
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k> :m-2<CR>gv=gv
+
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
