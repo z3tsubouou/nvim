@@ -79,10 +79,14 @@ nmap <F8> :TagbarToggle<CR>
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
+let g:NERDTreeWinPos = "right"
+let g:NERDTreeIgnore = ['^build$', '^node_modules$', '^dist$']
+
 let g:python3_host_prog = "/usr/bin/python3" 
+
 let g:gitgutter_realtime = 1  
 let g:gitgutter_sign_allow_clobber = 1
-let g:NERDTreeWinPos = "right"
+
 let g:loaded_node_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
