@@ -65,12 +65,14 @@ vnoremap <C-k> :m-2<CR>gv=gv
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
+:set updatetime=100
 
 :colorscheme tender
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 let g:python3_host_prog = "/usr/bin/python3" 
+let g:gitgutter_realtime = 1  
 let g:gitgutter_sign_allow_clobber = 1
 let g:NERDTreeWinPos = "right"
 let g:loaded_node_provider = 0
