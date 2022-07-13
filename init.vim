@@ -82,7 +82,7 @@ nnoremap tp :BufferPrevious <CR>
 nnoremap tc :BufferClose <CR>
 
 " HopWord
-nnoremap hw :HopWord <CR>
+nnoremap <C-h> :HopWord <CR>
 
 " move line
 nnoremap <C-j> :m+<CR>==
