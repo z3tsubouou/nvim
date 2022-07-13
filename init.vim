@@ -6,6 +6,31 @@
 :set smarttab
 :set softtabstop=4
 :set mouse=a
+:set encoding=utf-8
+" TextEdit might fail if hidden is not set.
+:set hidden
+
+" Some servers have issues with backup files, see #649.
+:set nobackup
+:set nowritebackup
+
+" Give more space for displaying messages.
+:set cmdheight=2
+
+" Don't pass messages to |ins-completion-menu|.
+:set shortmess+=c
+
+:set completeopt-=preview " For No Previews
+:set updatetime=100
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  :set signcolumn=number
+else
+  :set signcolumn=yes
+endif
 
 call plug#begin()
 
@@ -29,6 +54,7 @@ Plug 'https://github.com/phaazon/hop.nvim' " jump between words
 Plug 'https://github.com/lewis6991/impatient.nvim' " speed up neovim
 Plug 'https://github.com/sindrets/diffview.nvim' " git diff
 Plug 'https://github.com/romgrk/barbar.nvim' " tab manager
+Plug 'https://github.com/RRethy/vim-hexokinase' " color 
 
 call plug#end()
 
@@ -54,6 +80,9 @@ nnoremap tn :BufferNext <CR>
 nnoremap tp :BufferPrevious <CR>
 nnoremap tc :BufferClose <CR>
 
+" HopWord
+nnoremap hw :HopWord <CR>
+
 " move line
 nnoremap <C-j> :m+<CR>==
 nnoremap <C-k> :m-2<CR>==
@@ -72,8 +101,15 @@ inoremap ` ``<Esc>ha
 
 nmap <F8> :TagbarToggle<CR>
 
-:set completeopt-=preview " For No Previews
-:set updatetime=100
+noremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 :colorscheme tender
 
@@ -95,7 +131,7 @@ let g:loaded_perl_provider = 0
 let bufferline = get(g:, 'bufferline', {})
 
 " Enable/disable animations
-let bufferline.animation = v:true
+let bufferline.animation = v:false
 
 " Enable/disable auto-hiding the tab bar when there is a single buffer
 let bufferline.auto_hide = v:true
