@@ -54,7 +54,8 @@ Plug 'https://github.com/phaazon/hop.nvim' " jump between words
 Plug 'https://github.com/lewis6991/impatient.nvim' " speed up neovim
 Plug 'https://github.com/sindrets/diffview.nvim' " git diff
 Plug 'https://github.com/romgrk/barbar.nvim' " tab manager
-Plug 'https://github.com/RRethy/vim-hexokinase' " color 
+Plug 'https://github.com/RRethy/vim-hexokinase', { 'do': 'make hexokinase' } " color 
+Plug 'https://github.com/mhinz/vim-startify' " recent folders
 
 call plug#end()
 
@@ -123,7 +124,6 @@ let g:python3_host_prog = "/usr/bin/python3"
 let g:gitgutter_realtime = 1  
 let g:gitgutter_sign_allow_clobber = 1
 
-let g:loaded_node_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 
