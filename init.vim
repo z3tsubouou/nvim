@@ -93,12 +93,12 @@ vnoremap <C-j> :m'>+<CR>gv=gv
 vnoremap <C-k> :m-2<CR>gv=gv
 
 " auto bracket completion
-inoremap { {}<Esc>ha
-inoremap ( ()<Esc>ha
-inoremap [ []<Esc>ha
-inoremap " ""<Esc>ha
-inoremap ' ''<Esc>ha
-inoremap ` ``<Esc>ha
+" inoremap { {}<Esc>ha
+" inoremap ( ()<Esc>ha
+" inoremap [ []<Esc>ha
+" inoremap " ""<Esc>ha
+" inoremap ' ''<Esc>ha
+" inoremap ` ``<Esc>ha
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -118,6 +118,7 @@ let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeIgnore = ['^build$', '^node_modules$', '^dist$']
+let NERDTreeShowHidden=1
 
 let g:python3_host_prog = "/usr/bin/python3" 
 
