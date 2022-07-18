@@ -36,14 +36,13 @@ call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
-Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
-Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'https://github.com/numToStr/Comment.nvim' " For Commenting gcc & gc
+Plug 'https://github.com/nvim-lualine/lualine.nvim' " Status bar
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/neoclide/coc.nvim'  " Auto Completion
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/kyazdani42/nvim-web-devicons' " Icons for diffview
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/airblade/vim-gitgutter' " gitgutter
@@ -56,6 +55,8 @@ Plug 'https://github.com/sindrets/diffview.nvim' " git diff
 Plug 'https://github.com/romgrk/barbar.nvim' " tab manager
 Plug 'https://github.com/RRethy/vim-hexokinase', { 'do': 'make hexokinase' } " color 
 Plug 'https://github.com/mhinz/vim-startify' " recent folders
+Plug 'https://github.com/APZelos/blamer.nvim' " gitlens
+Plug 'https://github.com/lukas-reineke/indent-blankline.nvim' " indent blankline
 
 call plug#end()
 
@@ -112,6 +113,10 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 :colorscheme tender
 
 let g:NERDTreeDirArrowExpandable="+"
@@ -149,8 +154,8 @@ let bufferline.closable = v:true
 let bufferline.clickable = v:true
 
 " Excludes buffers from the tabline
-let bufferline.exclude_ft = ['javascript']
-let bufferline.exclude_name = ['package.json']
+" let bufferline.exclude_ft = ['javascript']
+" let bufferline.exclude_name = ['package.json']
 
 " Enable/disable icons
 " if set to 'buffer_number', will show buffer number in the tabline
@@ -197,12 +202,14 @@ let bufferline.letters =
 " where X is the buffer number. But only a static string is accepted here.
 let bufferline.no_name_title = v:null
 
+let g:blamer_enabled = 1
+
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 lua << EOF
 require('impatient')
-require'hop'.setup()
-require'nvim-web-devicons'.setup {}
-require'nvim-treesitter.configs'.setup {
+require('hop').setup()
+require('nvim-web-devicons').setup {}
+require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
   ensure_installed = { "javascript", "typescript", "rust" },
 
@@ -232,5 +239,20 @@ require'nvim-treesitter.configs'.setup {
     additional_vim_regex_highlighting = false,
   },
 }
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    show_current_context_start = true,
+	show_end_of_line = true,
+}
+require('lualine').setup {
+	options = {
+		theme = 'moonfly',
+	},
+	extensions = {
+		'nerdtree'
+	}
+}
+require('Comment').setup()
 EOF
 
