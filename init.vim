@@ -54,9 +54,9 @@ Plug 'https://github.com/lewis6991/impatient.nvim' " speed up neovim
 Plug 'https://github.com/sindrets/diffview.nvim' " git diff
 Plug 'https://github.com/romgrk/barbar.nvim' " tab manager
 Plug 'https://github.com/RRethy/vim-hexokinase', { 'do': 'make hexokinase' } " color 
-Plug 'https://github.com/mhinz/vim-startify' " recent folders
 Plug 'https://github.com/APZelos/blamer.nvim' " gitlens
 Plug 'https://github.com/lukas-reineke/indent-blankline.nvim' " indent blankline
+Plug 'https://github.com/startup-nvim/startup.nvim' "startup
 
 call plug#end()
 
@@ -254,5 +254,6 @@ require('lualine').setup {
 	}
 }
 require('Comment').setup()
+require('startup').setup()
 EOF
 
