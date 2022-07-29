@@ -83,14 +83,16 @@ nnoremap tc :BufferClose <CR>
 
 " HopWord
 nnoremap <C-h> :HopWord <CR>
+" Noh
+nnoremap noh :noh <CR>
 
 " move line
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k> :m-2<CR>==
-inoremap <C-j> <Esc>:m+<CR>==gi
-inoremap <C-k> <Esc>:m-2<CR>==gi
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k> :m-2<CR>gv=gv
+nnoremap J :m+<CR>==
+nnoremap K :m-2<CR>==
+inoremap J <Esc>:m+<CR>==gi
+inoremap K <Esc>:m-2<CR>==gi
+vnoremap J :m'>+<CR>gv=gv
+vnoremap K :m-2<CR>gv=gv
 
 " auto bracket completion
 " inoremap { {}<Esc>ha
@@ -102,7 +104,7 @@ vnoremap <C-k> :m-2<CR>gv=gv
 
 nmap <F8> :TagbarToggle<CR>
 
-noremap <silent> K :call ShowDocumentation()<CR>
+noremap <silent> <C-k> :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
